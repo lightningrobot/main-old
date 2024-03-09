@@ -1,2 +1,2 @@
-# main
-Lightning Robot Main code.
+# 闪电机器人
+轻快，好用，基于Python的多平台机器人框架。
