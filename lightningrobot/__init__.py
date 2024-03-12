@@ -16,7 +16,7 @@ class Main:
         # 进入无限循环，持续监听并处理消息
         while True:
             # 使用Adapter的listen方法异步等待并获取消息
-            message,event_type = await self.adapter.listen()
+            message,event_type,id = await self.adapter.listen()
             # 判断消息是否有对应指令
             for plugin in self.plugins:
-                await plugin.command(message,event_type)
+                await plugin.command(message,event_type,id)
