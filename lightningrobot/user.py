@@ -1,15 +1,13 @@
 import pymysql
 from lightningrobot import log 
-def initialization():
-# 打开数据库连接
-    db = pymysql.connect(host='localhost',
+
+db = pymysql.connect(host='localhost',
                          user='lightningrobot',
                          password='lightningrobot',
                          database='Robot')
+cursor = db.cursor()
 
-    # 创建游标对象 cursor
-    cursor = db.cursor()
-
+def initialization():
     # 删除已存在同名表
     cursor.execute("DROP TABLE IF EXISTS user")
 
@@ -27,13 +25,6 @@ def initialization():
     db.close()
 
 def create(name):
-    # 打开数据库连接
-    db = pymysql.connect(host='localhost',
-                         user='lightningrobot',
-                         password='lightningrobot',
-                         database='Robot')
-    
-    cursor = db.cursor()
     authority = 1
     password = 'lightningrobot'
     # 使用参数化查询构造SQL语句
