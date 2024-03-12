@@ -7,7 +7,7 @@ class Adapter(ABC):
         pass
     
     @abstractmethod
-    async def send_message(self, message: str) -> None:
+    async def send_message(self, event_type, message: str) -> None:
         """发送消息"""
         pass
 
