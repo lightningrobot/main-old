@@ -2,15 +2,15 @@ from abc import ABC, abstractmethod
 from lightningrobot import log
 class Adapter(ABC):
     @abstractmethod
-    async def connect(self) -> None:
+    async def connect(self,list) -> None:
         """连接到聊天平台"""
-        log.info("正在连接聊天平台...")
+        await log.info("正在连接适配器"+list)
         pass
     
     @abstractmethod
     async def send_message(self, event_type, id, message: str) -> None:
         """发送消息"""
-        log.info("发送消息：",message)
+        await log.info("发送消息：",message)
         pass
 
     @abstractmethod

@@ -7,7 +7,7 @@ db = pymysql.connect(host='localhost',
                          database='Robot')
 cursor = db.cursor()
 
-def initialization():
+async def initialization():
     # 删除已存在同名表
     cursor.execute("DROP TABLE IF EXISTS user")
 
@@ -24,7 +24,7 @@ def initialization():
     # 关闭数据库连接
     db.close()
 
-def create(name):
+async def create(name):
     authority = 1
     password = 'lightningrobot'
     # 使用参数化查询构造SQL语句
@@ -39,7 +39,6 @@ def create(name):
     except Exception as e:
         # 如果发生错误则回滚
         db.rollback()
-        log.error(f"{e}")
-        
+        await log.error(f"{e}")
     # 关闭数据库连接
     db.close()
